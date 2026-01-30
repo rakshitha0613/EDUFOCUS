@@ -1,0 +1,1655 @@
+/* Study Tools CSS */
+:root {
+    --bg-color: #0f0f1e;
+    --surface-color: #1e1e2e;
+    --text-color: #e0e0e0;
+    --accent-color: #6c5ce7;
+    --accent-light: #a29bfe;
+    --border-color: #2d2d3d;
+    --success-color: #00b894;
+    --danger-color: #d63031;
+    --warning-color: #fdcb6e;
+}
+
+/* Pomodoro Timer Styles */
+.pomodoro-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.timer-display {
+    font-size: 4rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 2rem 0;
+    padding: 2rem;
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-light));
+    border-radius: 12px;
+    color: white;
+    font-family: 'Courier New', monospace;
+    box-shadow: 0 8px 32px rgba(108, 92, 231, 0.3);
+    transition: all 0.3s ease;
+}
+
+.timer-display.work-phase {
+    background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+}
+
+.timer-display.break-phase {
+    background: linear-gradient(135deg, #00b894, #55efc4);
+}
+
+#phaseLabel {
+    font-size: 1.2rem;
+    text-align: center;
+    margin: 1rem 0;
+    color: var(--accent-light);
+    font-weight: 500;
+}
+
+.timer-controls {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.timer-controls button {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    background: var(--accent-color);
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.timer-controls button:hover:not(:disabled) {
+    background: var(--accent-light);
+    transform: translateY(-2px);
+}
+
+.timer-controls button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.timer-settings {
+    background: var(--surface-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 2rem 0;
+    border-left: 4px solid var(--accent-color);
+}
+
+.timer-settings label {
+    display: block;
+    margin: 1rem 0;
+    color: var(--text-color);
+}
+
+.timer-settings input {
+    padding: 0.5rem;
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-color);
+    margin-left: 1rem;
+    width: 100px;
+}
+
+.pomodoroStats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.stat-item {
+    background: var(--surface-color);
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.stat-label {
+    display: block;
+    color: var(--accent-light);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.stat-value {
+    display: block;
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+/* Study Planner Styles */
+.study-planner-container {
+    padding: 2rem;
+}
+
+.planner-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.planner-header h2 {
+    margin: 0;
+}
+
+.session-modal, .card-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+    background: var(--surface-color);
+    margin: 5% auto;
+    padding: 2rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+}
+
+.modal-close {
+    color: var(--text-color);
+    float: right;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.modal-close:hover {
+    color: var(--danger-color);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-color);
+    font-family: inherit;
+}
+
+.session-card {
+    background: var(--surface-color);
+    border-left: 4px solid var(--accent-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.session-card.completed {
+    border-left-color: var(--success-color);
+    opacity: 0.7;
+}
+
+.session-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.session-status {
+    background: var(--accent-color);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+}
+
+.session-details p {
+    margin: 0.5rem 0;
+    color: var(--text-color);
+}
+
+.session-actions {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.session-actions button {
+    flex: 1;
+    padding: 0.6rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-complete {
+    background: var(--success-color);
+    color: white;
+}
+
+.btn-delete {
+    background: var(--danger-color);
+    color: white;
+}
+
+.btn-complete:hover,
+.btn-delete:hover {
+    opacity: 0.8;
+    transform: translateY(-2px);
+}
+
+.upcomingSessions {
+    background: var(--surface-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 2rem 0;
+}
+
+.upcoming-item {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--bg-color);
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+.upcoming-time {
+    background: var(--accent-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-weight: bold;
+    min-width: 80px;
+    text-align: center;
+}
+
+.upcoming-info h4 {
+    margin: 0 0 0.5rem 0;
+}
+
+.upcoming-info p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--accent-light);
+}
+
+.calendar-month {
+    background: var(--surface-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 2rem 0;
+}
+
+.weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    text-align: center;
+    color: var(--accent-light);
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
+}
+
+.calendar-day {
+    aspect-ratio: 1;
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.calendar-day:hover {
+    background: var(--accent-color);
+    color: white;
+}
+
+.calendar-day.has-sessions {
+    background: var(--accent-color);
+    color: white;
+}
+
+.session-count {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background: var(--danger-color);
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+}
+
+.calendar-day.empty {
+    background: transparent;
+    border: none;
+}
+
+/* Flashcard System Styles */
+.decks-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.decks-grid, .maps-grid, .notes-grid, .quizzes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.deck-card, .map-card, .note-card, .quiz-card {
+    background: var(--surface-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--accent-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+.deck-card:hover, .map-card:hover, .note-card:hover, .quiz-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(108, 92, 231, 0.2);
+}
+
+.deck-card h3, .map-card h3, .note-card h3, .quiz-card h3 {
+    margin: 0 0 0.5rem 0;
+    color: var(--text-color);
+}
+
+.deck-card p, .map-card p, .note-card p, .quiz-card p {
+    margin: 0.5rem 0;
+    color: var(--accent-light);
+    font-size: 0.9rem;
+}
+
+.deck-card-stats, .map-card-stats, .quiz-card-stats {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    color: var(--accent-light);
+}
+
+.deck-content {
+    display: none;
+    padding: 2rem;
+}
+
+.deck-header, .quiz-header, .map-editor-header, .editor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    gap: 1rem;
+}
+
+.btn-back {
+    padding: 0.6rem 1rem;
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-back:hover {
+    background: var(--accent-color);
+    color: white;
+}
+
+.deck-actions {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.btn-primary, .btn-success, .btn-secondary, .btn-danger {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.btn-primary {
+    background: var(--accent-color);
+    color: white;
+}
+
+.btn-success {
+    background: var(--success-color);
+    color: white;
+}
+
+.btn-secondary {
+    background: var(--surface-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+
+.btn-danger {
+    background: var(--danger-color);
+    color: white;
+}
+
+.btn-primary:hover, .btn-success:hover, .btn-danger:hover {
+    opacity: 0.8;
+    transform: translateY(-2px);
+}
+
+.btn-secondary:hover {
+    background: var(--border-color);
+}
+
+.cards-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.card-item {
+    background: var(--bg-color);
+    padding: 1rem;
+    border-radius: 4px;
+    border-left: 3px solid var(--accent-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-preview {
+    flex: 1;
+}
+
+.card-preview p {
+    margin: 0.25rem 0;
+    font-size: 0.9rem;
+}
+
+.study-view {
+    background: var(--surface-color);
+    padding: 2rem;
+    border-radius: 8px;
+}
+
+.study-progress {
+    margin-bottom: 2rem;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: var(--border-color);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-color), var(--accent-light));
+    transition: width 0.3s ease;
+}
+
+.flashcard {
+    perspective: 1000px;
+    height: 400px;
+    margin: 2rem 0;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-light));
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    color: white;
+}
+
+.card-back {
+    background: linear-gradient(135deg, var(--success-color), #55efc4);
+    transform: rotateY(180deg);
+}
+
+.card-question, .card-answer {
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.flip-hint {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-top: 1rem;
+}
+
+.study-controls {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin: 2rem 0;
+}
+
+.btn-nav, .btn-flip {
+    padding: 0.8rem 1.5rem;
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-nav:hover:not(:disabled), .btn-flip:hover {
+    background: var(--accent-color);
+    color: white;
+}
+
+.btn-nav:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.study-feedback {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin: 2rem 0;
+}
+
+.btn-correct {
+    background: var(--success-color);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-incorrect {
+    background: var(--danger-color);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-correct:hover, .btn-incorrect:hover {
+    opacity: 0.8;
+    transform: translateY(-2px);
+}
+
+/* Quiz Generator Styles */
+.quiz-card p.quiz-status {
+    margin-top: 1rem;
+    color: var(--success-color);
+    font-weight: bold;
+}
+
+.quiz-question {
+    background: var(--bg-color);
+    padding: 2rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+
+.quiz-question h3 {
+    margin: 0 0 1.5rem 0;
+    font-size: 1.2rem;
+}
+
+.quiz-options {
+    display: grid;
+    gap: 1rem;
+}
+
+.option-label {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background: var(--surface-color);
+    border: 2px solid var(--border-color);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.option-label:hover {
+    border-color: var(--accent-color);
+    background: var(--bg-color);
+}
+
+.option-label input[type="radio"] {
+    margin-right: 1rem;
+    cursor: pointer;
+}
+
+.option-text {
+    flex: 1;
+}
+
+.quiz-results {
+    text-align: center;
+    padding: 2rem;
+}
+
+.results-score {
+    margin: 2rem 0;
+}
+
+.score-number {
+    display: block;
+    font-size: 4rem;
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+.score-text {
+    display: block;
+    font-size: 1.5rem;
+    color: var(--accent-light);
+    margin-top: 1rem;
+}
+
+.results-details {
+    background: var(--surface-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.review-section {
+    margin-top: 2rem;
+}
+
+.review-list {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.review-item {
+    padding: 1rem;
+    background: var(--surface-color);
+    border-left: 4px solid var(--success-color);
+    border-radius: 4px;
+}
+
+.review-item.incorrect {
+    border-left-color: var(--danger-color);
+}
+
+.review-item h4 {
+    margin: 0 0 0.5rem 0;
+}
+
+.review-item p {
+    margin: 0.25rem 0;
+    font-size: 0.9rem;
+}
+
+/* Mind Mapper Styles */
+.map-editor-header {
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.editor-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.map-canvas {
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin: 2rem 0;
+}
+
+#mindMapSvg {
+    display: block;
+}
+
+.map-sidebar {
+    background: var(--surface-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+}
+
+.nodes-tree {
+    margin-top: 1rem;
+}
+
+.tree-node {
+    padding: 0.5rem 0;
+}
+
+.node-item {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    padding: 0.5rem;
+}
+
+.node-label {
+    font-weight: 500;
+    flex: 1;
+    word-break: break-word;
+}
+
+.btn-delete-node {
+    padding: 0.25rem 0.5rem;
+    background: var(--danger-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+/* Note Taker Styles */
+.notes-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.notes-search {
+    margin-bottom: 2rem;
+}
+
+.search-input {
+    width: 100%;
+    padding: 1rem;
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-color);
+    font-size: 1rem;
+}
+
+.note-card {
+    background: var(--surface-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-left: 4px solid var(--accent-color);
+}
+
+.note-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(108, 92, 231, 0.2);
+}
+
+.note-preview {
+    color: var(--accent-light);
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+}
+
+.note-tags {
+    display: flex;
+    gap: 0.5rem;
+    margin: 1rem 0;
+    flex-wrap: wrap;
+}
+
+.tag {
+    background: var(--accent-color);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+}
+
+.note-date {
+    color: var(--accent-light);
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+.note-editor {
+    display: none;
+}
+
+#noteEditor {
+    display: none;
+    padding: 2rem;
+}
+
+.note-title-input {
+    width: 100%;
+    font-size: 1.5rem;
+    padding: 1rem;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid var(--accent-color);
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.editor-toolbar {
+    display: flex;
+    gap: 0.5rem;
+    margin: 1rem 0;
+    flex-wrap: wrap;
+    background: var(--surface-color);
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.toolbar-btn {
+    padding: 0.5rem 1rem;
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.toolbar-btn:hover {
+    background: var(--accent-color);
+    color: white;
+}
+
+.editor-main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.note-editor {
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem;
+    color: var(--text-color);
+    font-family: 'Courier New', monospace;
+    resize: none;
+    min-height: 500px;
+}
+
+.editor-preview {
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem;
+    overflow-y: auto;
+    min-height: 500px;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.editor-preview h1, .editor-preview h2, .editor-preview h3 {
+    color: var(--accent-light);
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.editor-preview strong {
+    color: var(--accent-color);
+}
+
+.editor-preview code {
+    background: var(--bg-color);
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+    font-size: 0.9rem;
+}
+
+.editor-footer {
+    background: var(--surface-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+.tags-section {
+    margin-bottom: 1rem;
+}
+
+.tag-input {
+    width: 100%;
+    padding: 0.8rem;
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-color);
+}
+
+.note-stats {
+    display: flex;
+    gap: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+    color: var(--accent-light);
+    font-size: 0.9rem;
+}
+
+/* Study Music Styles */
+.music-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.volume-control {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--surface-color);
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+}
+
+.volume-slider {
+    width: 150px;
+    cursor: pointer;
+}
+
+.btn-icon {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+.music-categories {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.category-btn {
+    padding: 0.6rem 1rem;
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.category-btn.active,
+.category-btn:hover {
+    background: var(--accent-color);
+    color: white;
+    border-color: var(--accent-color);
+}
+
+.music-tracks {
+    display: grid;
+    gap: 1rem;
+}
+
+.music-track {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--surface-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--accent-color);
+    transition: all 0.3s ease;
+}
+
+.music-track:hover {
+    transform: translateX(5px);
+    box-shadow: 0 5px 15px rgba(108, 92, 231, 0.2);
+}
+
+.track-info h3 {
+    margin: 0 0 0.25rem 0;
+}
+
+.track-category {
+    color: var(--accent-light);
+    font-size: 0.8rem;
+    margin: 0;
+}
+
+.btn-play {
+    padding: 0.6rem 1.2rem;
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-play:hover {
+    background: var(--accent-light);
+    transform: translateY(-2px);
+}
+
+.now-playing {
+    background: var(--surface-color);
+    padding: 2rem;
+    border-radius: 8px;
+    margin: 2rem 0;
+    border-left: 4px solid var(--success-color);
+}
+
+.player-embed {
+    margin: 1rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.now-playing-title {
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 1rem 0 0 0;
+}
+
+.music-timer {
+    background: var(--surface-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 2rem 0;
+    border-left: 4px solid var(--accent-color);
+}
+
+.timer-presets {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin: 1rem 0;
+}
+
+.btn-preset {
+    padding: 0.6rem 1rem;
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-preset:hover {
+    background: var(--accent-color);
+    color: white;
+}
+
+.timer-display {
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-light));
+    border-radius: 8px;
+    margin: 1rem 0;
+}
+
+#timerText {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+    margin: 0;
+}
+
+.btn-large {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+    margin: 2rem 0;
+}
+
+.favorites-section {
+    background: var(--surface-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 2rem 0;
+}
+
+.favorites-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.favorite-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    background: var(--bg-color);
+    border-radius: 4px;
+    border-left: 3px solid var(--accent-color);
+}
+
+/* Smart Break Reminders */
+.break-reminder-section {
+    padding: 2rem;
+}
+
+.reminder-settings {
+    background: var(--surface-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 2rem 0;
+}
+
+.setting-item {
+    margin-bottom: 1rem;
+}
+
+.setting-item label {
+    display: flex;
+    align-items: center;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+.setting-item input[type="checkbox"] {
+    margin-right: 1rem;
+    cursor: pointer;
+}
+
+.setting-input {
+    padding: 0.5rem;
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-color);
+    width: 100px;
+}
+
+.break-actions {
+    display: flex;
+    gap: 1rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.break-statistics {
+    background: var(--surface-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 2rem 0;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.stat-card {
+    background: var(--bg-color);
+    padding: 1rem;
+    border-radius: 4px;
+    text-align: center;
+    border-left: 3px solid var(--accent-color);
+}
+
+.stat-card .stat-label {
+    display: block;
+    color: var(--accent-light);
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+}
+
+.stat-card .stat-value {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+.break-history {
+    background: var(--surface-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 2rem 0;
+}
+
+.history-list {
+    margin-top: 1rem;
+    display: grid;
+    gap: 0.5rem;
+}
+
+.history-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    background: var(--bg-color);
+    border-radius: 4px;
+}
+
+.break-time {
+    color: var(--accent-light);
+}
+
+.break-duration {
+    background: var(--accent-color);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+}
+
+.break-tips {
+    background: var(--surface-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 2rem 0;
+}
+
+.tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.tip-card {
+    background: var(--bg-color);
+    padding: 1rem;
+    border-radius: 4px;
+    border-left: 3px solid var(--accent-color);
+}
+
+.tip-card h4 {
+    margin: 0 0 0.5rem 0;
+    color: var(--accent-light);
+}
+
+.tip-card p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-color);
+}
+
+/* Practice Problems */
+.problems-header {
+    margin-bottom: 2rem;
+}
+
+.filter-controls {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.filter-select {
+    padding: 0.6rem;
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+.problems-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.problem-card {
+    background: var(--surface-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-left: 4px solid var(--accent-color);
+    border: 1px solid var(--border-color);
+}
+
+.problem-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(108, 92, 231, 0.2);
+}
+
+.problem-badge {
+    display: inline-block;
+    background: var(--accent-color);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.problem-subject {
+    color: var(--accent-light);
+    font-size: 0.85rem;
+    margin: 0.5rem 0;
+}
+
+.problem-preview {
+    color: var(--text-color);
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+.problem-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+}
+
+.view-solution {
+    color: var(--accent-color);
+    font-weight: 500;
+    cursor: pointer;
+}
+
+#problemViewer {
+    display: none;
+    padding: 2rem;
+}
+
+.problem-viewer-header {
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.problem-meta {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.badge-subject, .badge-difficulty, .badge-topic {
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.badge-subject {
+    background: var(--accent-color);
+    color: white;
+}
+
+.badge-difficulty {
+    color: white;
+}
+
+.badge-difficulty.easy {
+    background: var(--success-color);
+}
+
+.badge-difficulty.medium {
+    background: var(--warning-color);
+    color: #000;
+}
+
+.badge-difficulty.hard {
+    background: var(--danger-color);
+}
+
+.badge-topic {
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+}
+
+.problem-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.problem-statement {
+    background: var(--surface-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--accent-color);
+}
+
+.problem-statement h3 {
+    margin: 0 0 1rem 0;
+}
+
+.problem-statement p {
+    margin: 0;
+    line-height: 1.6;
+}
+
+.answer-section {
+    background: var(--surface-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--accent-light);
+}
+
+.answer-section h3 {
+    margin: 0 0 1rem 0;
+}
+
+.answer-input {
+    width: 100%;
+    height: 250px;
+    padding: 1rem;
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-color);
+    font-family: inherit;
+    resize: none;
+}
+
+.answer-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.answer-buttons button {
+    flex: 1;
+}
+
+.solution-section {
+    grid-column: 1 / -1;
+    background: var(--surface-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--success-color);
+}
+
+.solution-text {
+    background: var(--bg-color);
+    padding: 1rem;
+    border-radius: 4px;
+    overflow-x: auto;
+    border: 1px solid var(--border-color);
+}
+
+.feedback {
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.feedback.correct {
+    background: rgba(0, 184, 148, 0.1);
+    border-left: 4px solid var(--success-color);
+    color: var(--success-color);
+}
+
+.feedback.incorrect {
+    background: rgba(214, 48, 49, 0.1);
+    border-left: 4px solid var(--danger-color);
+    color: var(--danger-color);
+}
+
+.problem-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.problem-counter {
+    color: var(--accent-light);
+    font-weight: 500;
+}
+
+.no-sessions, .no-upcoming, .no-notes {
+    text-align: center;
+    padding: 2rem;
+    color: var(--accent-light);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .decks-grid, .maps-grid, .notes-grid, .quizzes-grid, .problems-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .editor-main {
+        grid-template-columns: 1fr;
+    }
+
+    .problem-content {
+        grid-template-columns: 1fr;
+    }
+
+    .problem-navigation {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .modal-content {
+        width: 95%;
+    }
+
+    .timer-display {
+        font-size: 2.5rem;
+    }
+
+    .volume-slider {
+        width: 100px;
+    }
+
+    .music-categories {
+        flex-direction: column;
+    }
+
+    .category-btn {
+        flex: 1;
+    }
+
+    .deck-header, .quiz-header, .map-editor-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .deck-actions, .editor-actions, .break-actions {
+        flex-direction: column;
+    }
+
+    .deck-actions button, .editor-actions button, .break-actions button {
+        width: 100%;
+    }
+
+    .study-controls {
+        flex-direction: column;
+    }
+
+    .timer-controls {
+        flex-direction: column;
+    }
+
+    .timer-controls button {
+        width: 100%;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Common animations */
+.session-card, .deck-card, .map-card, .note-card, .quiz-card, .music-track, .problem-card {
+    animation: fadeIn 0.3s ease;
+}

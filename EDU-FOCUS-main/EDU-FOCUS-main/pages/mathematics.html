@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathematics Resources - EduFocus</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>EduFocus</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="../index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../index.html#study-materials" class="nav-link">Back to Subjects</a>
+                </li>
+                <li class="nav-item">
+                    <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="subject-page">
+            <div class="subject-header">
+                <div class="subject-icon-large">
+                    <i class="fas fa-calculator"></i>
+                </div>
+                <h1>Mathematics</h1>
+                <p>Master mathematical concepts from basic arithmetic to advanced calculus</p>
+            </div>
+
+            <div class="topic-grid">
+                <div class="topic-card">
+                    <h3><i class="fas fa-plus"></i> Algebra</h3>
+                    <div class="topic-content">
+                        <ul>
+                            <li>Linear Equations</li>
+                            <li>Quadratic Functions</li>
+                            <li>Polynomial Operations</li>
+                            <li>Systems of Equations</li>
+                        </ul>
+                        <div class="topic-actions">
+                            <button class="btn btn-primary" onclick="startStudySession('algebra')">
+                                <i class="fas fa-play"></i> Start Learning
+                            </button>
+                            <button class="btn btn-secondary" onclick="openQuiz('algebra')">
+                                <i class="fas fa-question"></i> Take Quiz
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="topic-card">
+                    <h3><i class="fas fa-chart-line"></i> Calculus</h3>
+                    <div class="topic-content">
+                        <ul>
+                            <li>Limits and Continuity</li>
+                            <li>Derivatives</li>
+                            <li>Integration</li>
+                            <li>Applications</li>
+                        </ul>
+                        <div class="topic-actions">
+                            <button class="btn btn-primary" onclick="startStudySession('calculus')">
+                                <i class="fas fa-play"></i> Start Learning
+                            </button>
+                            <button class="btn btn-secondary" onclick="openQuiz('calculus')">
+                                <i class="fas fa-question"></i> Take Quiz
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="topic-card">
+                    <h3><i class="fas fa-chart-bar"></i> Statistics</h3>
+                    <div class="topic-content">
+                        <ul>
+                            <li>Descriptive Statistics</li>
+                            <li>Probability Theory</li>
+                            <li>Hypothesis Testing</li>
+                            <li>Regression Analysis</li>
+                        </ul>
+                        <div class="topic-actions">
+                            <button class="btn btn-primary" onclick="startStudySession('statistics')">
+                                <i class="fas fa-play"></i> Start Learning
+                            </button>
+                            <button class="btn btn-secondary" onclick="openQuiz('statistics')">
+                                <i class="fas fa-question"></i> Take Quiz
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="topic-card">
+                    <h3><i class="fas fa-vector-square"></i> Geometry</h3>
+                    <div class="topic-content">
+                        <ul>
+                            <li>Euclidean Geometry</li>
+                            <li>Trigonometry</li>
+                            <li>Coordinate Geometry</li>
+                            <li>3D Geometry</li>
+                        </ul>
+                        <div class="topic-actions">
+                            <button class="btn btn-primary" onclick="startStudySession('geometry')">
+                                <i class="fas fa-play"></i> Start Learning
+                            </button>
+                            <button class="btn btn-secondary" onclick="openQuiz('geometry')">
+                                <i class="fas fa-question"></i> Take Quiz
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="study-tools-section">
+                <h2>Mathematics Tools</h2>
+                <div class="tools-grid">
+                    <div class="tool-card interactive" onclick="openCalculator()">
+                        <i class="fas fa-calculator"></i>
+                        <h4>Scientific Calculator</h4>
+                        <p>Advanced calculator for complex mathematical operations</p>
+                    </div>
+                    
+                    <div class="tool-card interactive" onclick="openGraphTool()">
+                        <i class="fas fa-project-diagram"></i>
+                        <h4>Graphing Tool</h4>
+                        <p>Visualize functions and mathematical relationships</p>
+                    </div>
+                    
+                    <div class="tool-card interactive" onclick="openFormulaeReference()">
+                        <i class="fas fa-book"></i>
+                        <h4>Formula Reference</h4>
+                        <p>Quick access to essential mathematical formulas</p>
+                    </div>
+                    
+                    <div class="tool-card interactive" onclick="openPracticeProbems()">
+                        <i class="fas fa-dumbbell"></i>
+                        <h4>Practice Problems</h4>
+                        <p>Solve problems to reinforce your understanding</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="progress-section">
+                <h2>Your Progress</h2>
+                <div class="progress-grid">
+                    <div class="progress-card">
+                        <div class="progress-header">
+                            <h4>Algebra</h4>
+                            <span class="progress-percentage">75%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 75%"></div>
+                        </div>
+                        <p>3 of 4 topics completed</p>
+                    </div>
+                    
+                    <div class="progress-card">
+                        <div class="progress-header">
+                            <h4>Calculus</h4>
+                            <span class="progress-percentage">40%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 40%"></div>
+                        </div>
+                        <p>2 of 5 topics completed</p>
+                    </div>
+                    
+                    <div class="progress-card">
+                        <div class="progress-header">
+                            <h4>Statistics</h4>
+                            <span class="progress-percentage">20%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 20%"></div>
+                        </div>
+                        <p>1 of 5 topics completed</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../js/app.js"></script>
+    <script>
+        function startStudySession(topic) {
+            alert(`Starting study session for ${topic}. This would open the learning materials.`);
+            // This would redirect to specific learning content
+        }
+
+        function openQuiz(topic) {
+            alert(`Opening quiz for ${topic}. This would start an interactive quiz.`);
+            // This would open quiz interface
+        }
+
+        function openCalculator() {
+            window.open('https://www.desmos.com/scientific', '_blank');
+        }
+
+        function openGraphTool() {
+            window.open('https://www.desmos.com/graphing', '_blank');
+        }
+
+        function openFormulaeReference() {
+            alert('Formula reference would open here with searchable mathematical formulas.');
+        }
+
+        function openPracticeProbems() {
+            alert('Practice problems section would open with interactive exercises.');
+        }
+    </script>
+
+    <style>
+        .subject-page {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .subject-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: var(--border-radius);
+            color: white;
+        }
+
+        .subject-icon-large {
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 3rem;
+        }
+
+        .subject-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .topic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .topic-card {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .topic-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .topic-card h3 {
+            background: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .topic-content {
+            padding: 1.5rem;
+        }
+
+        .topic-content ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .topic-content li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--gray-200);
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .topic-content li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success-color);
+            font-weight: bold;
+        }
+
+        .topic-content li:last-child {
+            border-bottom: none;
+        }
+
+        .topic-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .progress-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .progress-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .progress-header h4 {
+            margin: 0;
+            color: var(--dark-color);
+        }
+
+        .progress-percentage {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--gray-200);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            transition: width 0.3s ease;
+        }
+
+        .progress-card p {
+            margin: 0;
+            color: var(--gray-600);
+            font-size: 0.9rem;
+        }
+
+        .study-tools-section,
+        .progress-section {
+            margin: 3rem 0;
+        }
+
+        .study-tools-section h2,
+        .progress-section h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--dark-color);
+        }
+
+        .tool-card.interactive {
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .tool-card.interactive:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        @media (max-width: 768px) {
+            .subject-page {
+                padding: 1rem;
+            }
+
+            .subject-header h1 {
+                font-size: 2rem;
+            }
+
+            .topic-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .topic-actions {
+                flex-direction: column;
+            }
+
+            .topic-actions .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+    <script src="../js/theme-manager.js"></script>
+</body>
+</html>

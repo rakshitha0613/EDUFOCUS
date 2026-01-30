@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduFocus - Smart Learning Platform</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/ai-features.css">
+    <link rel="stylesheet" href="css/study-tools.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>EduFocus</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link active">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#dashboard" class="nav-link">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#study-materials" class="nav-link">Study Materials</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#focus-tracker" class="nav-link">Focus Tracker</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#pdf-summarizer" class="nav-link">PDF Summarizer</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#ai-features" class="nav-link">
+                        <i class="fas fa-robot"></i>
+                        AI Features
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#study-tools" class="nav-link">
+                        <i class="fas fa-tools"></i>
+                        Study Tools
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#profile" class="nav-link">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link logout-btn" onclick="logout()">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Logout
+                    </button>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">Smart Learning with Focus Tracking</h1>
+                    <p class="hero-subtitle">Enhance your learning experience with AI-powered focus monitoring and PDF summarization</p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary" onclick="showSection('focus-tracker')">
+                            <i class="fas fa-eye"></i>
+                            Start Focus Tracking
+                        </button>
+                        <button class="btn btn-secondary" onclick="showSection('pdf-summarizer')">
+                            <i class="fas fa-file-pdf"></i>
+                            Summarize PDF
+                        </button>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="floating-cards">
+                        <div class="floating-card card-1">
+                            <i class="fas fa-brain"></i>
+                            <span>AI-Powered Learning</span>
+                        </div>
+                        <div class="floating-card card-2">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Smart Analytics</span>
+                        </div>
+                        <div class="floating-card card-3">
+                            <i class="fas fa-trophy"></i>
+                            <span>Achievement System</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Focus Tracking</h3>
+                    <p>Monitor your attention levels using advanced eye-tracking technology</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-text"></i>
+                    </div>
+                    <h3>PDF Summarization</h3>
+                    <p>Get instant AI-generated summaries of your study materials</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Progress Analytics</h3>
+                    <p>Track your learning progress with detailed statistics</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>Study Materials</h3>
+                    <p>Access a wide variety of subjects and learning resources</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="section">
+            <div class="section-header">
+                <h2>Dashboard</h2>
+                <p>Your learning progress overview</p>
+            </div>
+            
+            <div class="dashboard-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="total-study-time">0h 0m</h3>
+                        <p>Total Study Time</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-percentage"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="average-focus">0%</h3>
+                        <p>Average Focus</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-file"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="pdfs-summarized">0</h3>
+                        <p>PDFs Summarized</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="study-streak">0</h3>
+                        <p>Study Streak</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <h3>Focus Levels Over Time</h3>
+                <canvas id="focus-chart"></canvas>
+            </div>
+
+            <div class="recent-activity">
+                <h3>Recent Activity</h3>
+                <div id="activity-list" class="activity-list">
+                    <div class="activity-item">
+                        <i class="fas fa-info-circle"></i>
+                        <span>Welcome to EduFocus! Start tracking your focus to see activity here.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Focus Tracker Section -->
+        <section id="focus-tracker" class="section">
+            <div class="section-header">
+                <h2>Focus Tracker</h2>
+                <p>Monitor your attention levels in real-time</p>
+            </div>
+
+            <div class="focus-container">
+                <div class="camera-container">
+                    <video id="camera-feed" autoplay muted></video>
+                    <canvas id="face-canvas"></canvas>
+                    <div class="camera-overlay">
+                        <div class="focus-indicator" id="focus-indicator">
+                            <div class="focus-level" id="focus-level">0%</div>
+                            <div class="focus-status" id="focus-status">Click Start to begin tracking</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="focus-controls">
+                    <button id="start-tracking" class="btn btn-primary">
+                        <i class="fas fa-play"></i>
+                        Start Tracking
+                    </button>
+                    <button id="stop-tracking" class="btn btn-danger" disabled>
+                        <i class="fas fa-stop"></i>
+                        Stop Tracking
+                    </button>
+                    <button id="toggle-camera" class="btn btn-secondary">
+                        <i class="fas fa-video"></i>
+                        Toggle Camera
+                    </button>
+                </div>
+
+                <div class="focus-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">Session Time:</span>
+                        <span id="session-time" class="stat-value">00:00</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Current Focus:</span>
+                        <span id="current-focus" class="stat-value">0%</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Average Focus:</span>
+                        <span id="session-average" class="stat-value">0%</span>
+                    </div>
+                </div>
+                
+                <!-- Debug Panel for Eye Tracking -->
+                <div class="debug-panel" id="focus-debug" style="margin-top: 20px; padding: 15px; background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(0, 212, 170, 0.3); border-radius: 10px; font-family: 'Courier New', monospace; font-size: 12px; color: #00d4aa; backdrop-filter: blur(10px);">
+                    <div style="color: #00ff88; font-weight: bold; margin-bottom: 10px;">👁️ Eye Tracking Debug</div>
+                    <div>Initializing eye detection...</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PDF Summarizer Section -->
+        <section id="pdf-summarizer" class="section">
+            <div class="section-header">
+                <h2>PDF Summarizer</h2>
+                <p>Upload your study materials for AI-powered summaries</p>
+            </div>
+
+            <div class="pdf-container">
+                <div class="upload-area" id="upload-area">
+                    <div class="upload-content">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <h3>Upload your PDF</h3>
+                        <p>Drag and drop your PDF file here, or click to browse</p>
+                        <input type="file" id="pdf-input" accept=".pdf" hidden>
+                        <button class="btn btn-primary" onclick="document.getElementById('pdf-input').click()">
+                            <i class="fas fa-file-upload"></i>
+                            Choose File
+                        </button>
+                    </div>
+                </div>
+
+                <div class="processing-area" id="processing-area" style="display: none;">
+                    <div class="processing-content">
+                        <div class="spinner"></div>
+                        <h3>Processing your PDF...</h3>
+                        <p>Our AI is analyzing and summarizing your document</p>
+                    </div>
+                </div>
+
+                <div class="summary-area" id="summary-area" style="display: none;">
+                    <div class="summary-header">
+                        <h3 id="pdf-title">Document Summary</h3>
+                        <button class="btn btn-secondary" onclick="resetPdfUpload()">
+                            <i class="fas fa-plus"></i>
+                            Upload Another
+                        </button>
+                    </div>
+                    <div class="summary-content" id="summary-content">
+                        <!-- Summary will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Study Materials Section -->
+        <section id="study-materials" class="section">
+            <div class="section-header">
+                <h2>Study Materials</h2>
+                <p>Access a wide variety of subjects and learning resources</p>
+            </div>
+
+            <div class="subjects-grid">
+                <div class="subject-card" onclick="showSubjectDetails('mathematics')">
+                    <div class="subject-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3>Mathematics</h3>
+                    <p>Algebra, Calculus, Statistics</p>
+                </div>
+                
+                <div class="subject-card" onclick="showSubjectDetails('science')">
+                    <div class="subject-icon">
+                        <i class="fas fa-atom"></i>
+                    </div>
+                    <h3>Science</h3>
+                    <p>Physics, Chemistry, Biology</p>
+                </div>
+                
+                <div class="subject-card" onclick="showSubjectDetails('computer-science')">
+                    <div class="subject-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Computer Science</h3>
+                    <p>Programming, Algorithms, Data Structures</p>
+                </div>
+                
+                <div class="subject-card" onclick="showSubjectDetails('languages')">
+                    <div class="subject-icon">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <h3>Languages</h3>
+                    <p>English, Spanish, French</p>
+                </div>
+                
+                <div class="subject-card" onclick="showSubjectDetails('history')">
+                    <div class="subject-icon">
+                        <i class="fas fa-landmark"></i>
+                    </div>
+                    <h3>History</h3>
+                    <p>World History, Ancient Civilizations</p>
+                </div>
+                
+                <div class="subject-card" onclick="showSubjectDetails('arts')">
+                    <div class="subject-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Arts</h3>
+                    <p>Visual Arts, Music, Literature</p>
+                </div>
+            </div>
+
+            <div class="study-tools">
+                <h3>Study Tools</h3>
+                <div class="tools-grid">
+                    <div class="tool-card">
+                        <i class="fas fa-sticky-note"></i>
+                        <h4>Flashcards</h4>
+                        <p>Create and review flashcards for any subject</p>
+                    </div>
+                    <div class="tool-card">
+                        <i class="fas fa-clock"></i>
+                        <h4>Pomodoro Timer</h4>
+                        <p>Use the Pomodoro technique for better focus</p>
+                    </div>
+                    <div class="tool-card">
+                        <i class="fas fa-tasks"></i>
+                        <h4>Todo Lists</h4>
+                        <p>Organize your study tasks and assignments</p>
+                    </div>
+                    <div class="tool-card">
+                        <i class="fas fa-chart-bar"></i>
+                        <h4>Progress Tracker</h4>
+                        <p>Monitor your learning progress over time</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Features Section -->
+        <section id="ai-features" class="section">
+            <div class="section-header">
+                <h2>🤖 AI-Enhanced Features</h2>
+                <p>Supercharge your learning with AI-powered tools</p>
+            </div>
+
+            <!-- AI Features Navigation Tabs -->
+            <div class="ai-tabs-container">
+                <button class="ai-tab-btn active" onclick="switchAITab('ai-assistant')">💬 AI Assistant</button>
+                <button class="ai-tab-btn" onclick="switchAITab('video-summarizer')">📹 Video Summarizer</button>
+                <button class="ai-tab-btn" onclick="switchAITab('text-to-speech')">🔊 Text-to-Speech</button>
+                <button class="ai-tab-btn" onclick="switchAITab('recommendations')">🎯 Recommendations</button>
+                <button class="ai-tab-btn" onclick="switchAITab('study-guides')">📘 Study Guides</button>
+            </div>
+
+            <!-- AI Assistant Tab -->
+            <div id="ai-assistant" class="ai-tab-content active" style="display: block;">
+                <div class="chat-container">
+                    <div class="chat-header">
+                        <h3>💬 AI Study Assistant</h3>
+                        <button id="clearChatBtn" class="btn-clear">Clear Chat</button>
+                    </div>
+                    <div class="chat-messages" id="chatMessages"></div>
+                    <div class="chat-input-container">
+                        <input type="text" id="chatInput" class="chat-input" placeholder="Ask me anything about your studies...">
+                        <button id="sendMessageBtn" class="btn-send">Send</button>
+                    </div>
+                    <div class="material-upload">
+                        <input type="file" id="materialUpload" accept=".pdf,.txt" hidden>
+                        <button onclick="document.getElementById('materialUpload').click()" class="btn-upload">
+                            📎 Upload Study Material
+                        </button>
+                        <div id="uploadedMaterials"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Summarizer Tab -->
+            <div id="video-summarizer" class="ai-tab-content">
+                <div class="video-summarizer-container">
+                    <h3>📹 YouTube Video Summarizer</h3>
+                    <div class="video-input-section">
+                        <input type="text" id="videoUrl" placeholder="Paste YouTube video URL here..." class="video-input">
+                        <button id="summarizeVideoBtn" class="btn-primary">Summarize</button>
+                    </div>
+                    <div id="videoSummaryResult"></div>
+                    <div id="videoHistory"></div>
+                </div>
+            </div>
+
+            <!-- Text-to-Speech Tab -->
+            <div id="text-to-speech" class="ai-tab-content">
+                <div class="tts-container">
+                    <h3>🔊 Text-to-Speech</h3>
+                    <textarea id="ttsText" placeholder="Paste your notes or text here to convert to speech..." rows="10" class="tts-textarea"></textarea>
+                    <div class="tts-controls">
+                        <button id="playBtn" class="btn-success">▶ Play</button>
+                        <button id="pauseBtn" class="btn-warning">⏸ Pause</button>
+                        <button id="stopBtn" class="btn-danger">⏹ Stop</button>
+                    </div>
+                    <div class="tts-settings">
+                        <div class="setting-group">
+                            <label>Voice:</label>
+                            <select id="voiceSelect"></select>
+                        </div>
+                        <div class="setting-group">
+                            <label>Speed: <span id="rateValue">1.0</span>x</label>
+                            <input type="range" id="rateSlider" min="0.5" max="2" step="0.1" value="1">
+                        </div>
+                        <div class="setting-group">
+                            <label>Pitch: <span id="pitchValue">1.0</span></label>
+                            <input type="range" id="pitchSlider" min="0.5" max="2" step="0.1" value="1">
+                        </div>
+                        <div class="setting-group">
+                            <label>Volume: <span id="volumeValue">100</span>%</label>
+                            <input type="range" id="volumeSlider" min="0" max="100" step="1" value="100">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recommendations Tab -->
+            <div id="recommendations" class="ai-tab-content">
+                <div class="recommendations-container">
+                    <h3>🎯 Smart Study Recommendations</h3>
+                    <button id="generateRecommendationsBtn" class="btn-primary">Generate Recommendations</button>
+                    <div id="performanceSummary"></div>
+                    <div id="recommendationsList"></div>
+                </div>
+            </div>
+
+            <!-- Study Guides Tab -->
+            <div id="study-guides" class="ai-tab-content">
+                <div class="study-guide-container">
+                    <h3>📘 Study Guide Generator</h3>
+                    <div class="guide-input-section">
+                        <input type="text" id="guideTopic" placeholder="Enter topic (e.g., 'Photosynthesis', 'World War II')..." class="guide-input">
+                        <select id="guideFormat" class="guide-format-select">
+                            <option value="comprehensive">Comprehensive</option>
+                            <option value="quick">Quick Reference</option>
+                            <option value="flashcards">Flashcard Style</option>
+                            <option value="mindmap">Mind Map Format</option>
+                        </select>
+                        <button id="generateGuideBtn" class="btn-primary">Generate Guide</button>
+                    </div>
+                    <div id="guideResult"></div>
+                    <div id="guidesHistory"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Study Tools Section -->
+        <section id="study-tools" class="section">
+            <div class="section-header">
+                <h2>📚 Study Tools</h2>
+                <p>Comprehensive tools to enhance your study sessions</p>
+            </div>
+
+            <!-- Study Tools Navigation Tabs -->
+            <div class="tabs-container">
+                <button class="tab-btn active" onclick="switchStudyTab('pomodoro')">⏲️ Pomodoro</button>
+                <button class="tab-btn" onclick="switchStudyTab('planner')">📅 Planner</button>
+                <button class="tab-btn" onclick="switchStudyTab('flashcards')">📇 Flashcards</button>
+                <button class="tab-btn" onclick="switchStudyTab('quizzes')">📝 Quizzes</button>
+                <button class="tab-btn" onclick="switchStudyTab('mindmap')">🧠 Mind Maps</button>
+                <button class="tab-btn" onclick="switchStudyTab('notes')">📓 Notes</button>
+                <button class="tab-btn" onclick="switchStudyTab('music')">🎵 Music</button>
+                <button class="tab-btn" onclick="switchStudyTab('breaks')">⏰ Breaks</button>
+                <button class="tab-btn" onclick="switchStudyTab('practice')">💪 Practice</button>
+            </div>
+
+            <!-- Pomodoro Timer Tab -->
+            <div id="pomodoro" class="tab-content active">
+                <div class="pomodoro-container">
+                    <h3>⏲️ Pomodoro Timer</h3>
+                    <div id="timerDisplay" class="timer-display">25:00</div>
+                    <p id="phaseLabel">Work Session</p>
+                    <div class="timer-settings">
+                        <label>Work (min): <input type="number" id="workInput" min="5" max="60" value="25" class="setting-input"></label>
+                        <label>Break (min): <input type="number" id="breakInput" min="1" max="30" value="5" class="setting-input"></label>
+                    </div>
+                    <div class="timer-controls">
+                        <button id="startBtn" class="btn-primary">▶ Start</button>
+                        <button id="pauseBtn" class="btn-warning" disabled>⏸ Pause</button>
+                        <button id="resetBtn" class="btn-secondary">↻ Reset</button>
+                        <button id="skipBtn" class="btn-secondary">⏭ Skip</button>
+                    </div>
+                    <div id="pomodoroStats" class="pomodoroStats"></div>
+                </div>
+            </div>
+
+            <!-- Study Planner Tab -->
+            <div id="planner" class="tab-content">
+                <div id="plannerContainer">
+                    <h3>📅 Study Session Planner</h3>
+                    <button id="createSessionBtn" class="btn-primary">➕ Create Session</button>
+                    <div id="upcomingSessions"></div>
+                    <div id="plannerCalendar"></div>
+                    <div id="sessionsList"></div>
+                    <div id="sessionModal" class="session-modal" style="display: none;">
+                        <div class="modal-content">
+                            <span class="modal-close" id="closeModal">&times;</span>
+                            <h3>Create Study Session</h3>
+                            <form id="sessionForm">
+                                <div class="form-group">
+                                    <label>Subject:</label>
+                                    <input type="text" id="subject" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Date:</label>
+                                    <input type="date" id="sessionDate" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Time:</label>
+                                    <input type="time" id="sessionTime" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Duration (minutes):</label>
+                                    <input type="number" id="duration" min="10" max="480" value="60" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Goals:</label>
+                                    <textarea id="sessionGoals" rows="3"></textarea>
+                                </div>
+                                <button type="submit" class="btn-primary">Create</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Flashcards Tab -->
+            <div id="flashcards" class="tab-content">
+                <div id="decksList"></div>
+                <div id="deckContent" style="display: none;"></div>
+                <div id="deckModal" class="session-modal" style="display: none;">
+                    <div class="modal-content">
+                        <span class="modal-close" id="closeDeckModal">&times;</span>
+                        <h3>Create New Deck</h3>
+                        <form id="deckForm">
+                            <div class="form-group">
+                                <label>Deck Name:</label>
+                                <input type="text" id="deckName" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Description:</label>
+                                <textarea id="deckDescription" rows="3"></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary">Create Deck</button>
+                        </form>
+                    </div>
+                </div>
+                <div id="cardModal" class="session-modal" style="display: none;">
+                    <div class="modal-content">
+                        <span class="modal-close" id="closeCardModal">&times;</span>
+                        <h3>Add Card</h3>
+                        <form id="cardForm">
+                            <div class="form-group">
+                                <label>Question:</label>
+                                <textarea id="cardQuestion" rows="3" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Answer:</label>
+                                <textarea id="cardAnswer" rows="3" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Difficulty:</label>
+                                <select id="cardDifficulty">
+                                    <option value="Easy">Easy</option>
+                                    <option value="Medium">Medium</option>
+                                    <option value="Hard">Hard</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn-primary">Add Card</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quizzes Tab -->
+            <div id="quizzes" class="tab-content">
+                <div id="quizzesList"></div>
+                <div id="quizContent" style="display: none;"></div>
+                <div id="generateModal" class="session-modal" style="display: none;">
+                    <div class="modal-content">
+                        <span class="modal-close" id="closeGenerateModal">&times;</span>
+                        <h3>Generate Quiz</h3>
+                        <form id="generateForm">
+                            <div class="form-group">
+                                <label>Topic:</label>
+                                <select id="quizTopic" required>
+                                    <option value="">Select</option>
+                                    <option value="Mathematics">Mathematics</option>
+                                    <option value="Science">Science</option>
+                                    <option value="History">History</option>
+                                    <option value="English">English</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Difficulty:</label>
+                                <select id="quizDifficulty" required>
+                                    <option value="Easy">Easy</option>
+                                    <option value="Medium">Medium</option>
+                                    <option value="Hard">Hard</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Questions:</label>
+                                <input type="number" id="questionCount" min="5" max="20" value="5" required>
+                            </div>
+                            <button type="submit" class="btn-primary">Generate</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mind Maps Tab -->
+            <div id="mindmap" class="tab-content">
+                <div id="mapsList"></div>
+                <div id="mapContent" style="display: none;"></div>
+                <div id="mapModal" class="session-modal" style="display: none;">
+                    <div class="modal-content">
+                        <span class="modal-close" id="closeMapModal">&times;</span>
+                        <h3>Create Mind Map</h3>
+                        <form id="mapForm">
+                            <div class="form-group">
+                                <label>Central Concept:</label>
+                                <input type="text" id="mapTitle" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Description:</label>
+                                <textarea id="mapDescription" rows="3"></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary">Create</button>
+                        </form>
+                    </div>
+                </div>
+                <div id="nodeModal" class="session-modal" style="display: none;">
+                    <div class="modal-content">
+                        <span class="modal-close" id="closeNodeModal">&times;</span>
+                        <h3>Add Node</h3>
+                        <form id="nodeForm">
+                            <div class="form-group">
+                                <label>Concept:</label>
+                                <input type="text" id="nodeName" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Parent:</label>
+                                <select id="parentNode"></select>
+                            </div>
+                            <div class="form-group">
+                                <label>Color:</label>
+                                <input type="color" id="nodeColor" value="#6c5ce7">
+                            </div>
+                            <button type="submit" class="btn-primary">Add</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notes Tab -->
+            <div id="notes" class="tab-content">
+                <div id="notesList"></div>
+                <div id="noteEditor" style="display: none;"></div>
+            </div>
+
+            <!-- Study Music Tab -->
+            <div id="music" class="tab-content">
+                <div id="musicPlayer"></div>
+            </div>
+
+            <!-- Break Reminders Tab -->
+            <div id="breaks" class="tab-content">
+                <div id="breakReminder"></div>
+            </div>
+
+            <!-- Practice Problems Tab -->
+            <div id="practice" class="tab-content">
+                <div id="problemsList"></div>
+                <div id="problemViewer" style="display: none;"></div>
+            </div>
+        </section>
+
+        <!-- Profile Section -->
+        <section id="profile" class="section">
+            <div class="section-header">
+                <h2>Profile</h2>
+                <p>Manage your account and preferences</p>
+            </div>
+
+            <div class="profile-container">
+                <div class="profile-card">
+                    <div class="profile-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="profile-info">
+                        <h3 id="user-name">Student</h3>
+                        <p id="user-email">student@example.com</p>
+                        <button class="btn btn-secondary">Edit Profile</button>
+                    </div>
+                </div>
+
+                <div class="preferences-card">
+                    <h3>Preferences</h3>
+                    <div class="preference-item">
+                        <label for="focus-sensitivity">Focus Sensitivity</label>
+                        <input type="range" id="focus-sensitivity" min="1" max="10" value="5">
+                    </div>
+                    <div class="preference-item">
+                        <label for="notifications">Notifications</label>
+                        <div class="toggle-switch">
+                            <input type="checkbox" id="notifications" checked>
+                            <span class="slider"></span>
+                        </div>
+                    </div>
+                    <div class="preference-item">
+                        <label for="theme-toggle">Theme Mode</label>
+                        <div class="theme-switcher">
+                            <span class="theme-label">Light</span>
+                            <div class="toggle-switch theme-toggle">
+                                <input type="checkbox" id="theme-toggle" checked>
+                                <span class="slider round"></span>
+                            </div>
+                            <span class="theme-label">Dark</span>
+                        </div>
+                    </div>
+                    <div class="preference-item">
+                        <label for="auto-save">Auto-save Progress</label>
+                        <div class="toggle-switch">
+                            <input type="checkbox" id="auto-save" checked>
+                            <span class="slider"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="achievements-card">
+                    <h3>Achievements</h3>
+                    <div class="achievements-grid">
+                        <div class="achievement">
+                            <i class="fas fa-medal"></i>
+                            <span>First Study Session</span>
+                        </div>
+                        <div class="achievement locked">
+                            <i class="fas fa-lock"></i>
+                            <span>1 Hour Focused</span>
+                        </div>
+                        <div class="achievement locked">
+                            <i class="fas fa-lock"></i>
+                            <span>10 PDFs Summarized</span>
+                        </div>
+                        <div class="achievement locked">
+                            <i class="fas fa-lock"></i>
+                            <span>7-Day Streak</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script src="js/session-check.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/focus-tracker.js"></script>
+    <script src="js/pdf-summarizer.js"></script>
+    <script src="js/dashboard.js"></script>
+    
+    <!-- AI Features Scripts -->
+    <script src="js/ai-assistant.js"></script>
+    <script src="js/video-summarizer.js"></script>
+    <script src="js/text-to-speech.js"></script>
+    <script src="js/smart-recommendations.js"></script>
+    <script src="js/study-guide-generator.js"></script>
+    
+    <!-- Study Tools Scripts -->
+    <script src="js/pomodoro-timer.js"></script>
+    <script src="js/study-planner.js"></script>
+    <script src="js/flashcard-system.js"></script>
+    <script src="js/quiz-generator.js"></script>
+    <script src="js/mind-mapper.js"></script>
+    <script src="js/note-taker.js"></script>
+    <script src="js/study-music.js"></script>
+    <script src="js/smart-break-reminders.js"></script>
+    <script src="js/practice-problems.js"></script>
+
+    <script>
+        // AI Features Tab Switching
+        function switchAITab(tabName) {
+            const contents = document.querySelectorAll('.ai-tab-content');
+            contents.forEach(content => content.style.display = 'none');
+
+            const buttons = document.querySelectorAll('.ai-tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            const selectedTab = document.getElementById(tabName);
+            if (selectedTab) {
+                selectedTab.style.display = 'block';
+                event.target.classList.add('active');
+            }
+        }
+
+        // Study Tools Tab Switching
+        function switchStudyTab(tabName) {
+            const contents = document.querySelectorAll('#study-tools .tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            const buttons = document.querySelectorAll('#study-tools .tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            const selectedTab = document.getElementById(tabName);
+            if (selectedTab) {
+                selectedTab.classList.add('active');
+                event.target.classList.add('active');
+            }
+        }
+
+        // Request notification permission on load
+        if ('Notification' in window && Notification.permission === 'default') {
+            Notification.requestPermission();
+        }
+    </script>
+</body>
+</html>

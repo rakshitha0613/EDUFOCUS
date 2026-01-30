@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome - EduFocus Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/welcome-styles.css">
+</head>
+<body>
+    <div class="welcome-container">
+        <div class="welcome-animation">
+            <div class="floating-elements">
+                <div class="element element-1">📚</div>
+                <div class="element element-2">🎯</div>
+                <div class="element element-3">🚀</div>
+                <div class="element element-4">💡</div>
+                <div class="element element-5">⭐</div>
+            </div>
+        </div>
+        
+        <div class="welcome-content">
+            <div class="welcome-card">
+                <div class="welcome-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                
+                <h1 class="welcome-title">Welcome to EduFocus!</h1>
+                <p class="welcome-subtitle" id="welcomeMessage">Hello there! Ready to start your learning journey?</p>
+                
+                <div class="feature-preview">
+                    <div class="feature-item">
+                        <i class="fas fa-camera"></i>
+                        <span>Focus Tracking</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-brain"></i>
+                        <span>AI Summarization</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Progress Analytics</span>
+                    </div>
+                </div>
+                
+                <div class="welcome-buttons">
+                    <button class="btn btn-primary" onclick="startLearning()">
+                        <i class="fas fa-play"></i>
+                        Start Learning
+                    </button>
+                    <button class="btn btn-secondary" onclick="takeTour()">
+                        <i class="fas fa-map-marked-alt"></i>
+                        Take a Tour
+                    </button>
+                </div>
+                
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <p class="progress-text">Setting up your workspace...</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Theme Toggle -->
+        <div class="theme-toggle-container">
+            <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle Theme">
+                <i class="fas fa-sun theme-icon light"></i>
+                <i class="fas fa-moon theme-icon dark"></i>
+            </button>
+        </div>
+        
+        <div class="skip-intro">
+            <button class="skip-btn" onclick="skipIntro()">
+                Skip Intro <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+    
+    <script src="js/theme-manager.js"></script>
+    <script src="js/welcome.js"></script>
+</body>
+</html>
